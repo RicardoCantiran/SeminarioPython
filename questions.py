@@ -35,9 +35,17 @@ for _ in range(3):
         print(f"{i + 1}. {answer}")
     # El usuario tiene 2 intentos para responder correctamente
     for intento in range(2):
-        user_answer = int(input("Respuesta: ")) - 1
+        respuesta = input("Respuesta")
+
+        #compruebo que sea un numero y que este a rango de las preguntas
+        if(respuesta.isdigit() and int(respuesta) > 0 and int(respuesta) < 4 ):
+            respuesta = int(respuesta) -1
+        else:
+            #sino fuerzo un cierre del programa con exit
+            print ("respuesta invalida")
+            exit(1)
         #Se verifica si la respuesta es correcta
-        if user_answer == correct_answers_index[question_index]:
+        if respuesta == correct_answers_index[question_index]:
             print("¡Correcto!")
             break
     else:
